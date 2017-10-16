@@ -6,6 +6,6 @@ setup(
     packages=find_packages(),
     package_data={},
     scripts=[
-        'bin/calculator',
+        'bin/calculator.py',
     ],
 )
