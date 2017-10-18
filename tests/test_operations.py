@@ -19,4 +19,25 @@ class TestOperations(TestCase):
         assert operations.divide(8,4) == 2
         #Check for div by zero
         assert operations.divide(1,0) == None
-    
+
+    def test_abs_val(self):
+        assert operations.abs_val(0) == 0
+        assert operations.abs_val(-0.76) == 0.76
+        assert operations.abs_val(1) == 1
+
+    def test_floor(self):
+        assert operations.floor(0) == 0
+        assert operations.floor(.5) == 0
+        assert operations.floor(-0.75) == -1
+
+    def test_ceiling(self):
+        assert operations.ceiling(0) == 0
+        assert operations.ceiling(-1.5) == -1
+        assert operations.ceiling(2.3) == 3
+
+
+
+    def test_power(self):
+        assert operations.power(0,1) == 0
+        assert operations.power(3,3) == 27
+        assert operations.power(-3, 0) == 1
