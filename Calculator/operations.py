@@ -48,3 +48,6 @@ def power(a,b):
     return a
     # only works for int powers
     # meed to fix for power of 0
+
+def rounding(a):
+    return int(a + 0.5)
