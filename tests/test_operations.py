@@ -41,6 +41,7 @@ class TestOperations(TestCase):
         assert operations.power(0,1) == 0
         assert operations.power(3,3) == 27
         assert operations.power(-3, 0) == 1
+        assert operations.power(0,0) == None
 
 
     def test_rounding(self):
