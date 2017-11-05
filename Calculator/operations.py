@@ -41,9 +41,6 @@ def ceiling(a):
         return int(a) + 1
 
 def power(a,b):
-    if a == 0 and b == 0:
-        return None
-    else:
         return a ** b
 
 def rounding(a):

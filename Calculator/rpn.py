@@ -5,7 +5,25 @@ Class that contains the function for evaluating a list of strings in Reverse Pol
 
 from Calculator import operations
 
-def rnp(eq):
+
+
+def rpn_eval(eq):
+    operations_switch = {
+        '+':operations.add,
+        '-':operations.subtract,
+        '*':operations.multiply,
+        "/":operations.divide,
+        "**":operations.power
+    }
+    evstack = []
     for i in eq:
-        if float(i) == float:
-            evstack.append(i)
+        if i in operations_switch:
+                b = evstack.pop()
+                a = evstack.pop()
+                n = operations_switch[i](a,b)
+                evstack.append(n)
+        else:
+            n = float(i)
+            evstack.append(n)
+
+    return evstack.pop()
