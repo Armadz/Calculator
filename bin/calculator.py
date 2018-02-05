@@ -10,10 +10,9 @@ def main():
 
     args = parse_args()
 
-    user_input = None
+    user_input = input('> ')
     while user_input != 'q':
 
-        user_input = input('> ')
         if args.rpn:
             # Do RPN calculation
             # rpn(user_input)
@@ -22,6 +21,8 @@ def main():
             # do infix calculation
             # infix(user_input)
             pass
+
+        user_input = input('> ')
 
 def parse_args():
     """Parse command line arguments"""
