@@ -41,13 +41,7 @@ def ceiling(a):
         return int(a) + 1
 
 def power(a,b):
-    #a raised to the power of b
-    c = a
-    for x in range(1,b):
-        a = a*c
-    return a
-    # only works for int powers
-    # meed to fix for power of 0
+        return a ** b
 
 def rounding(a):
     return int(a + 0.5)
