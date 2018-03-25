@@ -5,27 +5,41 @@ Perform calculations on the command line
 
 import argparse
 
+from Calculator import rpn_eval, tokenize
+
+
 def main():
-    """Main function"""
+    """REPL style calculator
+
+    REPL = Read-Evaluate-Print Loop
+    """
 
     args = parse_args()
 
+    # Read
     user_input = input('> ')
+
     while user_input != 'q':
-
+        # Evaluate
+        tokens = tokenize(user_input)
         if args.rpn:
-            # Do RPN calculation
-            # rpn(user_input)
-            pass
+            result = rpn_eval(user_input)
         else:
-            # do infix calculation
-            # infix(user_input)
+            # result = infix(user_input)
             pass
 
+        # Print
+        print(result)
+
+        # Loop
         user_input = input('> ')
 
 def parse_args():
-    """Parse command line arguments"""
+    """Parse command line arguments
+
+    Returns
+        argparse.Namespace: Object that contains parsed args
+    """
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-r',

@@ -1,29 +1,42 @@
-"""
+"""Calculator.rpn
 
-Class that contains the function for evaluating a list of strings in Reverse Polish Notation
+Module that contains the function for evaluating a list of strings
+in Reverse Polish Notation.
 """
 
 from Calculator import operations
 
 
 
-def rpn_eval(eq):
-    operations_switch = {
-        '+':operations.add,
-        '-':operations.subtract,
-        '*':operations.multiply,
-        "/":operations.divide,
-        "**":operations.power
-    }
-    evstack = []
-    for i in eq:
-        if i in operations_switch:
-                b = evstack.pop()
-                a = evstack.pop()
-                n = operations_switch[i](a,b)
-                evstack.append(n)
-        else:
-            n = float(i)
-            evstack.append(n)
+def rpn_eval(equation):
+    """Reverse Polish Notation evaluation
 
-    return evstack.pop()
+    Calculate the result of a calculation in RPN form.
+
+    Args:
+        equation (list): tokenized equation ordered in postfix notation
+
+    Returns:
+        int: result of an equation
+    """
+
+    operations_switch = {
+        '+': operations.add,
+        '-': operations.subtract,
+        '*': operations.multiply,
+        "/": operations.divide,
+        "**": operations.power
+    }
+
+    eval_stack = []
+    for value in equation:
+        if value in operations_switch:
+            b = eval_stack.pop()
+            a = eval_stack.pop()
+            number = operations_switch[value](a, b)
+        else:
+            number = float(value)
+
+        eval_stack.append(number)
+
+    return eval_stack.pop()
