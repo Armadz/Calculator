@@ -9,33 +9,33 @@ def add(a, b):
     return a + b
 
 def subtract(a, b):
-    """TODO: fill me in"""
+    """Subtracts two numbers"""
     return a - b
 
 def multiply(a, b):
-    """TODO: fill me in"""
+    """Multiplies two numbers"""
     return a * b
 
 def divide(a, b):
-    """TODO: fill me in"""
-    # TODO: Add error if div by zero
+    """Divides two number, returns error if div by zero"""
     if b != 0:
         return float(a) / b
+    return "Error: Division by Zero"
 
 def abs_val(a):
-    """TODO: fill me in"""
+    """Returns the absolute value of a number"""
     if a < 0:
         return a*-1
     return a
 
 def floor(a):
-    """TODO: fill me in"""
+    """Returns the floor value of a number"""
     if a < 0:
         return int(a) - 1
     return int(a)
 
 def ceiling(a):
-    """TODO: fill me in"""
+    """Rerturns the ceiling value of a number"""
     if a < 0:
         return int(a)
     elif a % 1 == 0:
@@ -43,9 +43,9 @@ def ceiling(a):
     return int(a) + 1
 
 def power(a, b):
-    """TODO: fill me in"""
+    """Raises the first number to the power of the second number"""
     return a ** b
 
 def rounding(a):
-    """TODO: fill me in"""
+    """Rounds a number to the nearest interger value"""
     return int(a + 0.5)
