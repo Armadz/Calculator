@@ -18,6 +18,7 @@ def multiply(a, b):
 
 def divide(a, b):
     """Divides two number, returns error if div by zero"""
+    #TODO Return Error for Division by zero
     if b != 0:
         return float(a) / b
     return None
