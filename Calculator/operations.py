@@ -20,7 +20,7 @@ def divide(a, b):
     """Divides two number, returns error if div by zero"""
     if b != 0:
         return float(a) / b
-    return "Error: Division by Zero"
+    return None
 
 def abs_val(a):
     """Returns the absolute value of a number"""
