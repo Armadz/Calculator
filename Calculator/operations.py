@@ -17,12 +17,13 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    """Divides two number, returns error if div by zero"""
+    """Divides two number, raises an error if div by zero"""
     #TODO Return Error for Division by zero
     if b != 0:
         return float(a) / b
-    return None
-
+    elif b == 0:
+        raise DivisionByZeroError('Division by Zero is undefined')
+    
 def abs_val(a):
     """Returns the absolute value of a number"""
     if a < 0:
@@ -36,7 +37,7 @@ def floor(a):
     return int(a)
 
 def ceiling(a):
-    """Rerturns the ceiling value of a number"""
+    """Returns the ceiling value of a number"""
     if a < 0:
         return int(a)
     elif a % 1 == 0:
@@ -50,3 +51,7 @@ def power(a, b):
 def rounding(a):
     """Rounds a number to the nearest interger value"""
     return int(a + 0.5)
+
+class DivisionByZeroError(Exception):
+    """Execption for Division by zero"""
+    pass

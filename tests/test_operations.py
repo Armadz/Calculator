@@ -18,8 +18,9 @@ def test_divide():
     # test for floating point division returns floating point
     assert isinstance(operations.divide(3, 2), float)
     assert operations.divide(8, 4) == 2
-    # Check for div by zero
-    assert operations.divide(1, 0) == None
+    # Check that DivisionByZeroError is raised
+    with pytest.raises(Exception):
+        operations.divide(1, 0)
 
 @pytest.mark.parametrize("given, expected", [
     (0, 0),
