@@ -18,12 +18,11 @@ def multiply(a, b):
 
 def divide(a, b):
     """Divides two number, raises an error if div by zero"""
-    #TODO Return Error for Division by zero
     if b != 0:
         return float(a) / b
     elif b == 0:
         raise DivisionByZeroError('Division by Zero is undefined')
-    
+
 def abs_val(a):
     """Returns the absolute value of a number"""
     if a < 0:
