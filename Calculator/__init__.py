@@ -23,4 +23,9 @@ from Calculator.operations import (
 )
 
 from Calculator.rpn import rpn_eval
-from Calculator.tokenizer import tokenize
+#from Calculator.tokenizer import tokenize
+
+from Calculator.infix_to_rpn import (
+        op_precedence,
+        assoc_is_left,
+)
