@@ -80,7 +80,7 @@ def _is_symbol(char):
     """Check if a character is a valid symbol
 
     Valid characters:
-        +-*/()
+        +-*/()^
 
     Args:
         char (string): A single character
@@ -88,7 +88,7 @@ def _is_symbol(char):
         bool: Whether a character is a symbol or not
     """
 
-    return char in ['+', '-', '*', '/', '(', ')']
+    return char in ['+', '-', '*', '/', '(', ')', '^']
 
 
 def _is_valid_character(char):
