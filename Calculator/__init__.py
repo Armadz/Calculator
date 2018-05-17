@@ -26,7 +26,7 @@ def tokenize(line):
     number = ''
 
     line = line.strip()
-    if len(line) == 0:
+    if not line:
         raise TokenError('No equation given')
 
     for char in line:
@@ -60,6 +60,7 @@ def tokenize(line):
         tokens.append(number)
     return tokens
 
+
 def _is_number(char):
     """Check if a character is a valid number
 
@@ -74,6 +75,7 @@ def _is_number(char):
 
     return char.isdigit() or char == '.'
 
+
 def _is_operator(char):
     """Check if a character is a valid number
 
@@ -87,6 +89,7 @@ def _is_operator(char):
     """
 
     return char in ['+', '-', '*', '/']
+
 
 def _is_valid_character(char):
     """Check if a character is valid in this math world

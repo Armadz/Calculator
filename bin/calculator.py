@@ -11,8 +11,12 @@ from Calculator import (
 )
 from Calculator.rpn import rpn_eval
 
+
 def main():
-    """Main function"""
+    """REPL style calculator
+
+    REPL = Read-Evaluate-Print Loop
+    """
 
     args = parse_args()
 
@@ -29,16 +33,30 @@ def main():
             print(err)
             continue
 
+    while user_input != 'q':
+        # Evaluate
+        result = None
+        tokens = tokenize(user_input)
         if args.rpn:
             # Do RPN calculation
-            print(rpn_eval(tokens))
+            result = rpn_eval(tokens)
         else:
-            # do infix calculation
-            # infix(user_input)
+            # result = infix(user_input)
             pass
 
+        # Print
+        print(result)
+
+        # Loop
+        user_input = input('> ')
+
+
 def parse_args():
-    """Parse command line arguments"""
+    """Parse command line arguments
+
+    Returns
+        argparse.Namespace: Object that contains parsed args
+    """
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-r',
@@ -51,6 +69,7 @@ def parse_args():
                         default='> ',
                         help='What the repl prompt looks like')
     return parser.parse_args()
+
 
 if __name__ == '__main__':
     main()
