@@ -6,7 +6,7 @@ Base operations for a calculator
 tokenize
 TokenError
 _is_number
-_is_operator
+_is_symbol
 _is_valid_character
 """
 
@@ -37,7 +37,7 @@ def tokenize(line):
         if _is_number(char):
             number += char
 
-        elif _is_operator(char):
+        elif _is_symbol(char):
 
             # two negatives make a positive
             if char == '-' and tokens and tokens[-1] == '-' and not number:
@@ -76,19 +76,19 @@ def _is_number(char):
     return char.isdigit() or char == '.'
 
 
-def _is_operator(char):
-    """Check if a character is a valid number
+def _is_symbol(char):
+    """Check if a character is a valid symbol
 
     Valid characters:
-        +-*/
+        +-*/()
 
     Args:
         char (string): A single character
     Returns:
-        bool: Whether a character is a operator or not
+        bool: Whether a character is a symbol or not
     """
 
-    return char in ['+', '-', '*', '/']
+    return char in ['+', '-', '*', '/', '(', ')']
 
 
 def _is_valid_character(char):
@@ -100,7 +100,7 @@ def _is_valid_character(char):
         bool: Whether a character is a parsable by this calculator or not
     """
 
-    return _is_number(char) or _is_operator(char) or char == ' '
+    return _is_number(char) or _is_symbol(char) or char == ' '
 
 class TokenError(Exception):
     pass

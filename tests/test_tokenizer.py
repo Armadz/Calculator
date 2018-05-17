@@ -9,6 +9,7 @@ token_parameters = [
     ('1 +1',  ['1', '+', '1']), # check spacing
     ('1-1',   ['1', '-', '1']), # check minus works
     ('1--1',  ['1', '+', '1']), # check minus works (two negative = positive)
+    ('(1+2)',  ['(', '1', '+', '2', ')']), # check parentheses
 ]
 
 @pytest.mark.parametrize('expected_input,expected_output', token_parameters)
