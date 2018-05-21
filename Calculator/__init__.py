@@ -10,6 +10,20 @@ _is_symbol
 _is_valid_character
 """
 
+
+from Calculator.operations import (
+    add,
+    subtract,
+    multiply,
+    divide,
+    abs_val,
+    floor,
+    ceiling,
+    power,
+    rounding,
+)
+
+
 def tokenize(line):
     """Split the line into a list
 
