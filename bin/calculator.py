@@ -5,7 +5,11 @@ Perform calculations on the command line
 
 import argparse
 
-from Calculator import rpn_eval, tokenize
+from Calculator import (
+    tokenize,
+    TokenError,
+)
+from Calculator.rpn import rpn_eval
 
 
 def main():
@@ -16,14 +20,26 @@ def main():
 
     args = parse_args()
 
-    # Read
-    user_input = input('> ')
+    user_input = ''
+    while user_input != 'q':
+        user_input = input(args.prompt)
+        if user_input == 'q':
+            print('Exiting...')
+            continue
+
+        try:
+            tokens = tokenize(user_input)
+        except TokenError as err:
+            print(err)
+            continue
 
     while user_input != 'q':
         # Evaluate
+        result = None
         tokens = tokenize(user_input)
         if args.rpn:
-            result = rpn_eval(user_input)
+            # Do RPN calculation
+            result = rpn_eval(tokens)
         else:
             # result = infix(user_input)
             pass
@@ -33,6 +49,7 @@ def main():
 
         # Loop
         user_input = input('> ')
+
 
 def parse_args():
     """Parse command line arguments
@@ -47,7 +64,12 @@ def parse_args():
                         default=False,
                         action='store_true',
                         help='Reverse Polish Notation (postfix notation)')
+    parser.add_argument('-p',
+                        '--prompt',
+                        default='> ',
+                        help='What the repl prompt looks like')
     return parser.parse_args()
+
 
 if __name__ == '__main__':
     main()
