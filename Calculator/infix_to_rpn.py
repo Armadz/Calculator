@@ -43,47 +43,47 @@ def assoc_is_left(operation):
             '+': True,
     }[operation]
 
-def op_switch(i, j):
+def op_switch(token, top_of_op_stack):
     """Checks for the conditions to activate the shunt
 
     Args:
-        i (str): incoming operator for tokens
-        j (str): Operator at the Top of the operation Stack
+        token (str): incoming operator for tokens
+        top_of_op_stack (str): Operator at the Top of the operation Stack
     Returns:
         Boolean: if conditions are met shuntingswitch is True
     """
     
-    if j != '(':
-        if op_precedence(j) > op_precedence(i):
+    if top_of_op_stack != '(':
+        if op_precedence(top_of_op_stack) > op_precedence(token):
             return True
-        elif op_precedence(j) == op_precedence(i) and \
-                assoc_is_left(j):
+        elif op_precedence(top_of_op_stack) == op_precedence(token) and \
+                assoc_is_left(top_of_op_stack):
             return True
         else:
             return False
     else:
         return False
 
-def shuntingyard(eq):
+def shuntingyard(tokens):
     """Transforms infix equations to rpn equations
 
     Args:
-        eq (list): processed infix equation
+        tokens (list): processed infix equation
     Returns:
         output (lists): rpn equation
     """
 
-    for i in eq:
-        if isinstance(i, numbers.Real):
-            output.append(i)
-        elif i in [ '^', '*', '/', '-', '+']:
+    for token in tokens:
+        if isinstance(token, numbers.Real):
+            output.append(token)
+        elif token in [ '^', '*', '/', '-', '+']:
             if operation_stack:
-                while op_switch(i, operation_stack[-1]) and operation_stack:
+                while op_switch(token, operation_stack[-1]) and operation_stack:
                     output.append(operation_stack.pop())
-            operation_stack.append(i)
-        elif i == '(':
-            operation_stack.append(i)
-        elif i == ')':
+            operation_stack.append(token)
+        elif token == '(':
+            operation_stack.append(token)
+        elif token == ')':
             while operation_stack[-1] != '(':
                 output.append(operation_stack.pop())
             operation_stack.pop()
