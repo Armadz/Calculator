@@ -8,7 +8,7 @@ operation_stack = []
 
 def op_precedence(operation):
     """Checks the precednece of an operations
- 
+
     Args:
         operation (str): mathematical operator
 
