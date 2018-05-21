@@ -1,5 +1,5 @@
 """
-This module contains the functions used by Calculator program 
+This module contains the functions used by Calculator program
 to change infix notation into postfix notation
 """
 import numbers
@@ -8,7 +8,7 @@ operation_stack = []
 
 def op_precedence(operation):
     """Checks the precednece of an operations
-    
+ 
     Args:
         operation (str): mathematical operator
 
@@ -38,7 +38,7 @@ def assoc_is_left(operation):
             '(': False,
             '^': False,
             '*': True,
-            '/': True, 
+            '/': True,
             '-': True,
             '+': True,
     }[operation]
