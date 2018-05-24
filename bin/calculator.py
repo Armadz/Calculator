@@ -9,6 +9,7 @@ from Calculator import (
     tokenize,
     TokenError,
 )
+from Calculator.infix_to_rpn import shuntingyard
 from Calculator.rpn import rpn_eval
 
 
@@ -33,16 +34,10 @@ def main():
             print(err)
             continue
 
-    while user_input != 'q':
-        # Evaluate
-        result = None
-        tokens = tokenize(user_input)
-        if args.rpn:
-            # Do RPN calculation
-            result = rpn_eval(tokens)
-        else:
-            # result = infix(user_input)
-            pass
+        if not args.rpn:
+            tokens = shuntingyard(tokens)
+
+        result = rpn_eval(tokens)
 
         # Print
         print(result)

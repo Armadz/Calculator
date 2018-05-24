@@ -52,5 +52,5 @@ def rounding(a):
     return int(a + 0.5)
 
 class DivisionByZeroError(Exception):
-    """Execption for Division by zero"""
+    """Exception for Division by zero"""
     pass
