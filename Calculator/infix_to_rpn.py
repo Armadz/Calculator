@@ -1,14 +1,14 @@
 """
-This module contains the functions used by Calculator program 
+This module contains the functions used by Calculator program
 to change infix notation into postfix notation
 """
-import numbers
+from Calculator.__init__ import _is_number
 output = []
 operation_stack = []
 
 def op_precedence(operation):
     """Checks the precednece of an operations
-    
+ 
     Args:
         operation (str): mathematical operator
 
@@ -38,7 +38,7 @@ def assoc_is_left(operation):
             '(': False,
             '^': False,
             '*': True,
-            '/': True, 
+            '/': True,
             '-': True,
             '+': True,
     }[operation]
@@ -52,7 +52,7 @@ def op_switch(token, top_of_op_stack):
     Returns:
         Boolean: if conditions are met shuntingswitch is True
     """
-    
+ 
     if top_of_op_stack != '(':
         if op_precedence(top_of_op_stack) > op_precedence(token):
             return True
@@ -74,7 +74,7 @@ def shuntingyard(tokens):
     """
 
     for token in tokens:
-        if token.replace('.','',1).isdigit():
+        if all([_is_number(char) for char in token]):
             output.append(token)
         elif token in [ '^', '*', '/', '-', '+']:
             if operation_stack:
