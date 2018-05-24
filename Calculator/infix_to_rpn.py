@@ -50,7 +50,7 @@ def op_switch(token, top_of_op_stack):
     Returns:
         Boolean: if conditions are met shuntingswitch is True
     """
- 
+
     if top_of_op_stack != '(':
         if op_precedence(top_of_op_stack) > op_precedence(token):
             return True
