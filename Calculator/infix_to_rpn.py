@@ -6,7 +6,7 @@ from Calculator import _is_number
 
 def op_precedence(operation):
     """Checks the precednece of an operations
- 
+
     Args:
         operation (str): mathematical operator
 
