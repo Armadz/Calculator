@@ -2,9 +2,7 @@
 This module contains the functions used by Calculator program
 to change infix notation into postfix notation
 """
-import numbers
-output = []
-operation_stack = []
+from Calculator import _is_number
 
 def op_precedence(operation):
     """Checks the precednece of an operations
@@ -73,8 +71,10 @@ def shuntingyard(tokens):
         output (lists): rpn equation
     """
 
+    operation_stack = []
+    output = []
     for token in tokens:
-        if isinstance(token, numbers.Real):
+        if all([_is_number(char) for char in token]):
             output.append(token)
         elif token in [ '^', '*', '/', '-', '+']:
             if operation_stack:
